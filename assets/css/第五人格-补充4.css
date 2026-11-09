@@ -1,0 +1,44 @@
+.preview .film-art{height:calc(100% - 35px);object-fit:fill}.preview .preview-caption{bottom:0;background:#161711e0;padding:2px 9px;left:39px}.preview .click-tip{bottom:2px}.preview .next-preview img{height:111px}
+@media(max-width:760px){.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:43px 28px;gap:0;height:96px;align-content:center;padding:7px 12px}.brand-mark{display:none}.brand{min-width:0}.brand h1{font-size:15px;letter-spacing:2px;white-space:nowrap}.brand small{font-size:9px;white-space:nowrap}.utility{margin-left:8px;gap:5px}.utility button{font-size:11px;padding:6px 8px}#focus-button{display:none}.progress{grid-column:1 / -1;margin:0;align-items:center;min-width:0}.progress span{font-size:9px;letter-spacing:0}.mobile .preview-caption{font-size:21px}.mobile .preview-caption b{font-size:23px}.mobile .preview .click-tip{font-size:21px}.toast{bottom:165px}.mobile .paper{max-height:calc(100% - 120px)}}
+
+/* Keep the artwork scaled; scroll paper content rather than clipping its actions. */
+html,body{max-width:100%;overflow-x:hidden}
+.viewport{min-width:0;min-height:1px}
+.modal-paper{max-width:100%;overflow-wrap:anywhere;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.modal-actions{flex-wrap:wrap}
+.modal-actions button{white-space:normal}
+@media(min-width:761px) and (max-width:1020px){
+  .progress{min-width:0;overflow-x:auto;justify-content:flex-start}
+  .progress span{flex-shrink:0}
+  .utility{flex-shrink:0}
+}
+@media(max-width:760px){
+  .mobile .paper{
+    max-height:580px;
+    max-height:var(--paper-max-height,580px);
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+    scrollbar-width:thin;
+  }
+  .mobile .paper-footer{flex-wrap:wrap;gap:12px}
+  .brand h1{font-size:clamp(12px,3.85vw,15px);letter-spacing:1px}
+  .utility{gap:4px;margin-left:4px}
+  .utility button{padding:6px}
+  .progress span{min-width:0;font-size:clamp(8px,2.35vw,9px);padding:6px 2px}
+  .demo-controls{min-width:0;flex-wrap:wrap;justify-content:flex-start}
+  .demo-controls label{min-width:0;gap:4px}
+  .demo-controls select{max-width:100px}
+}
+@media(max-width:340px){
+  .topbar{padding-left:8px;padding-right:8px}
+  .utility button{font-size:10px;padding:6px 4px}
+  .footer{padding-left:8px;padding-right:8px}
+  .demo-controls{gap:4px}
+  .demo-label{padding:3px 4px}
+}
+@media(max-width:760px){
+  .mobile .episode-layer{bottom:var(--paper-bottom,171px)}
+}

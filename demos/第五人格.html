@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080e11">
+<title>谢幕后，还有彩蛋 · 第五人格赛后社交原型</title>
+<link rel="stylesheet" href="../assets/css/第五人格.css">
+<!-- 后续样式 -->
+<link rel="stylesheet" href="../assets/css/第五人格-补充2.css">
+<link rel="stylesheet" href="../assets/css/第五人格-补充3.css">
+<link rel="stylesheet" href="../assets/css/第五人格-补充4.css">
+</head>
+<body>
+<header class="topbar">
+<div class="brand"><div class="brand-mark" aria-hidden="true">幕</div><div><h1>谢幕后，还有彩蛋</h1><small>第五人格 · 幕间彩蛋交互原型</small></div></div>
+<nav class="progress" aria-label="体验流程"><span data-step="preview">01 彩蛋预告</span><span data-step="cast">02 剧组名单</span><span data-step="goal">03 社交目标</span><span data-step="draft">04 表达草稿</span><span data-step="next">05 下一幕</span></nav>
+<div class="utility"><button id="help-button">体验说明</button><button id="reset-button">重新体验</button><button id="focus-button">专注</button></div>
+</header>
+<main class="viewport" id="viewport" aria-label="庄园赛后聊天演示">
+<div class="stage-wrap" id="stage-wrap"><div class="stage" id="stage">
+<nav class="channel-tabs" aria-label="聊天频道"><button data-channel="全国">全国<small>#29</small></button><button data-channel="赛后" class="active" aria-selected="true">赛后</button><button data-channel="好友">好友</button></nav>
+<section id="chat-log" class="chat-log" aria-label="聊天记录" aria-live="polite" aria-relevant="additions"></section>
+<div class="composer"><button class="voice" id="voice-button" aria-label="语音入口"><svg viewBox="0 0 50 66" fill="none" stroke="currentColor" stroke-width="3"><rect x="16" y="5" width="18" height="33" rx="9"/><path d="M9 26v7a16 16 0 0 0 32 0v-7M25 49v11M14 61h22M18 18h14M18 25h14"/></svg></button></div>
+<div class="input-hint"><strong>点击输入留言</strong>最多可输入50字</div>
+<div class="input-box"><textarea id="chat-input" rows="1" maxlength="50" placeholder="点击输入留言" aria-label="聊天留言，最多50字"></textarea></div>
+<button class="emoji-button" id="emoji-button" aria-label="添加表情" aria-expanded="false">☺</button>
+<button class="send-button" id="send-button" disabled>发送</button><span class="letter-count" id="letter-count">0 / 50</span>
+<div class="emoji-menu" id="emoji-menu" hidden><button>（＾▽＾）</button><button>（｡･ω･｡）</button><button>谢谢！</button><button>下局见～</button></div>
+<section class="episode-layer" id="episode-layer" aria-label="幕间彩蛋"></section>
+</div></div>
+</main>
+<footer class="footer"><div class="status" role="status"><i class="status-dot"></i><span class="status-text" id="status-text">一段真实配合，值得一个小小的彩蛋。点击输入框上方的胶片开始。</span></div><div class="demo-controls"><span class="demo-label">本地演示</span><label>本局<select id="scenario"><option value="rescue">关键救援</option><option value="comic">共同整活</option><option value="none">无共同事件</option></select></label><label>队友回复<select id="reply-mode"><option value="positive">正向回应</option><option value="none">不回复</option><option value="negative">婉拒</option></select></label></div></footer>
+<button class="view-toggle" id="exit-focus" hidden>退出专注</button>
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="modal-shade" id="modal-shade" hidden><section class="modal-paper" id="modal-paper" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"><h2 id="modal-title"></h2><div id="modal-body"></div><div class="modal-actions" id="modal-actions"></div></section></div>
+<script src="../assets/js/第五人格.js"></script>
+</body>
+</html>

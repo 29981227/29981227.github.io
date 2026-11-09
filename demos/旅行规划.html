@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="../assets/css/旅行规划.css">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>旅行规划预订一站式Agent</title>
+<link rel="stylesheet" href="../assets/css/旅行规划-补充2.css">
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span>9:41</span><span>5G · 88%</span></div>
+  <div class="app">
+    <div class="topbar">
+      <div class="brand" title="旅行规划预订一站式Agent"><div class="brand-icon">↔</div>旅行Agent</div>
+      <div class="agent-pill" id="agentPill">Agent Demo</div>
+    </div>
+
+    <div class="nav">
+      <button id="navPlan" class="active">Plan</button>
+      <button id="navDiscover">Discover</button>
+      <button id="navMap">Map</button>
+    </div>
+
+    <div class="content">
+
+      <!-- Flow 1 Home -->
+      <section class="screen active" id="home">
+        <div class="card cyan-card">
+          <div class="field-grid">
+            <div class="field-box">
+              <label>Start from</label>
+              <b>Shanghai</b>
+            </div>
+            <div class="field-box">
+              <label>Heading to</label>
+              <b class="warn">Not fixed</b>
+            </div>
+            <div class="field-box">
+              <label>Travel Time</label>
+              <b>6 Days</b>
+            </div>
+            <div class="field-box">
+              <label>Travel Style</label>
+              <b>Family-friendly</b>
+            </div>
+          </div>
+
+          <div style="margin-top:10px">
+            <textarea>国庆想带爸妈去日本玩6天，预算2万，不想太累，最好能看到红叶</textarea>
+          </div>
+
+          <button class="btn gradient full" onclick="go('clarify','Plan')">✦ Plan a Trip with Agent</button>
+          <button class="btn secondary full">Create It Myself</button>
+        </div>
+
+        <div class="section">Start Anywhere</div>
+        <div class="start-grid">
+          <div class="start-item"><div class="ico">⌁</div><span>输入一句话</span></div>
+          <div class="start-item"><div class="ico">▧</div><span>上传截图</span></div>
+          <div class="start-item"><div class="ico">🔗</div><span>粘贴攻略</span></div>
+          <div class="start-item"><div class="ico">✈</div><span>导入订单</span></div>
+          <div class="start-item"><div class="ico">♡</div><span>收藏夹</span></div>
+          <div class="start-item"><div class="ico">👥</div><span>从他人开始</span></div>
+          <div class="start-item"><div class="ico">📍</div><span>地点清单</span></div>
+          <div class="start-item"><div class="ico">🧾</div><span>PDF行程</span></div>
+        </div>
+
+        <div class="section">Start from others</div>
+        <div class="inspo-row">
+          <div class="inspo-mini bg1" onclick="go('explore','Discover')">
+            <b>京都红叶慢游</b>
+            <span>4.8分 · 适合父母 · 可改成6天</span>
+          </div>
+          <div class="inspo-mini bg2">
+            <b>曼谷亲子轻松线</b>
+            <span>低预算 · 酒店友好 · 少换乘</span>
+          </div>
+          <div class="inspo-mini bg3">
+            <b>瑞士火车风景线</b>
+            <span>高预算 · 视觉体验强</span>
+          </div>
+          <div class="inspo-mini bg4">
+            <b>首尔周末购物</b>
+            <span>短途 · 城市便利</span>
+          </div>
+        </div>
+
+        <div class="section">My Itineraries</div>
+        <div class="card">
+          <div class="trip-object">
+            <div class="progress-ring"><div>72%</div></div>
+            <div style="flex:1">
+              <div class="title" style="margin:0">京都红叶家庭旅行</div>
+              <div class="sub">已确认航班 / 酒店 / 接送机，仍有 4 项待办</div>
+            </div>
+            <button class="btn small light" onclick="go('tripobject','Plan')">继续</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Flow 2 Clarify -->
+      <section class="screen" id="clarify">
+        <div class="agent-card">
+          <b>Trip Agent 正在澄清关键约束</b>
+          <p>我不会让你填完整表单，只确认会影响方案质量的条件。带父母看红叶时，体力、酒店位置和航班方式会直接影响路线。</p>
+        </div>
+
+        <div class="card">
+          <div class="title">父母能接受的旅行节奏？</div>
+          <div class="sub">京都红叶景点分散，这会影响酒店区域、每日景点数量和交通方式。</div>
+          <div class="chips">
+            <div class="chip">轻松陪伴型 · 4-6km/天</div>
+            <div class="chip selected">舒适游览型 · 6-8km/天</div>
+            <div class="chip">充实打卡型 · 10km+/天</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">酒店更看重什么？</div>
+          <div class="chips">
+            <div class="chip selected">靠近地铁</div>
+            <div class="chip selected">含早餐</div>
+            <div class="chip">温泉体验</div>
+            <div class="chip">房间更大</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">是否接受转机？</div>
+          <div class="sub">直飞更省心，但国庆价格可能高约 ¥1,200。</div>
+          <div class="chips">
+            <div class="chip selected">直飞优先</div>
+            <div class="chip">短转机可接受</div>
+            <div class="chip">两种都保留</div>
+          </div>
+        </div>
+
+        <div class="card cyan-card">
+          <div class="title">Trip Goal Card 正在生成</div>
+          <div class="goal-row"><span>Travelers</span><span>3人，含父母</span></div>
+          <div class="goal-row"><span>Preference</span><span>红叶 / 温泉 / 低强度</span></div>
+          <div class="goal-row"><span>Walking</span><span>6-8km/天</span></div>
+          <div class="goal-row"><span>Flight</span><span>直飞优先</span></div>
+          <div class="confidence"><div></div></div>
+          <div class="sub">理解置信度 86%，仍可在下一步编辑。</div>
+          <button class="btn gradient full" onclick="go('goal','Plan')">确认需求，开始 DeepDive</button>
+        </div>
+      </section>
+
+      <!-- Flow 3 Goal + Stepper -->
+      <section class="screen" id="goal">
+        <div class="card cyan-card">
+          <div class="title">Trip Goal Card</div>
+          <div class="goal-row"><span>From</span><span>Shanghai</span></div>
+          <div class="goal-row"><span>Destination</span><span class="warn">Japan / 城市待推荐</span></div>
+          <div class="goal-row"><span>Time</span><span>National Holiday · 6 Days</span></div>
+          <div class="goal-row"><span>Travelers</span><span>3 adults · parents included</span></div>
+          <div class="goal-row"><span>Budget</span><span>¥20,000</span></div>
+          <div class="goal-row"><span>Preference</span><span>Red leaves / Hot spring / Low intensity</span></div>
+          <div class="goal-row"><span>Avoid</span><span>Long walking / Too many transfers</span></div>
+          <button class="btn secondary full">Edit any field</button>
+        </div>
+
+        <div class="card">
+          <div class="title">Agent Stepper</div>
+          <div class="stepper">
+            <div class="step"><div class="dot">✓</div><div>已理解目标：家庭出行、红叶、预算、低强度</div></div>
+            <div class="step"><div class="dot">✓</div><div>已澄清关键约束：体力、酒店、航班</div></div>
+            <div class="step running"><div class="dot">…</div><div>正在筛目的地：排除节奏过紧和预算风险方案</div></div>
+            <div class="step"><div class="dot">○</div><div>准备校验航班、酒店、路线和门票</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Multi-Agent Collaboration</div>
+          <div class="agent-grid">
+            <div class="agent-mini"><b>Flight Agent</b><div class="bar"><div style="width:72%"></div></div></div>
+            <div class="agent-mini"><b>Hotel Agent</b><div class="bar"><div style="width:64%"></div></div></div>
+            <div class="agent-mini"><b>Route Agent</b><div class="bar"><div style="width:55%"></div></div></div>
+            <div class="agent-mini"><b>Budget Agent</b><div class="bar"><div style="width:80%"></div></div></div>
+          </div>
+          <button class="btn gradient full" onclick="go('explore','Discover')">查看灵感候选</button>
+        </div>
+      </section>
+
+      <!-- Flow 4 Explore + Shortlist -->
+      <section class="screen" id="explore">
+        <div class="agent-card">
+          <b>Discover · DeepDive Thinking</b>
+          <p>我先保留 3 个候选方向。你收藏、加入或不感兴趣的反馈，会实时更新偏好模型。</p>
+        </div>
+
+        <div class="card">
+          <div class="title">Preference Model</div>
+          <div class="pref-row"><b>红叶</b><div class="bar"><div style="width:90%"></div></div><span>90%</span></div>
+          <div class="pref-row"><b>低强度</b><div class="bar"><div style="width:85%"></div></div><span>85%</span></div>
+          <div class="pref-row"><b>温泉</b><div class="bar"><div style="width:72%"></div></div><span>72%</span></div>
+          <div class="pref-row"><b>购物</b><div class="bar"><div style="width:20%"></div></div><span>20%</span></div>
+        </div>
+
+        <div class="destination-card">
+          <div class="destination-hero bg1">
+            <h3>Kyoto + Nara</h3>
+            <span>红叶稳定 · 节奏舒缓 · 父母友好</span>
+          </div>
+          <div class="destination-body">
+            <div class="metrics">
+              <div class="metric"><b>92%</b><span>Match</span></div>
+              <div class="metric"><b>¥18.4k</b><span>Budget</span></div>
+              <div class="metric"><b>7km</b><span>Walk/day</span></div>
+            </div>
+            <div class="sub">为什么适合：红叶体验强，跨城少，酒店可集中在京都地铁沿线。</div>
+            <div class="action-row">
+              <button class="btn small gradient" onclick="addShort('京都+奈良')">加入候选</button>
+              <button class="btn small light">收藏</button>
+              <button class="btn small secondary">解释</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="destination-card">
+          <div class="destination-hero bg2">
+            <h3>Kyushu Hot Spring</h3>
+            <span>温泉体验强 · 路线轻松 · 红叶弱一些</span>
+          </div>
+          <div class="destination-body">
+            <div class="metrics">
+              <div class="metric"><b>84%</b><span>Match</span></div>
+              <div class="metric"><b>¥17.6k</b><span>Budget</span></div>
+              <div class="metric"><b>5km</b><span>Walk/day</span></div>
+            </div>
+            <div class="sub">为什么适合：父母体力压力更小；取舍是红叶确定性低于京都。</div>
+            <div class="action-row">
+              <button class="btn small gradient" onclick="addShort('九州温泉')">加入候选</button>
+              <button class="btn small light">收藏</button>
+              <button class="btn small secondary">不感兴趣</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="destination-card">
+          <div class="destination-hero bg3">
+            <h3>Tokyo Suburb</h3>
+            <span>交通便利 · 预算较低 · 红叶体验次优</span>
+          </div>
+          <div class="destination-body">
+            <div class="metrics">
+              <div class="metric"><b>76%</b><span>Match</span></div>
+              <div class="metric"><b>¥16.8k</b><span>Budget</span></div>
+              <div class="metric"><b>6km</b><span>Walk/day</span></div>
+            </div>
+            <div class="sub">为什么保留：交通最稳，适合作为预算优先备选。</div>
+            <div class="action-row">
+              <button class="btn small gradient" onclick="addShort('东京周边')">加入候选</button>
+              <button class="btn small light">收藏</button>
+              <button class="btn small secondary">不感兴趣</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="shortlist">
+          <div class="title" style="font-size:13px;margin-bottom:4px">Shortlist</div>
+          <div class="sub" id="shortText">已加入：京都+奈良</div>
+          <button class="btn gradient full" onclick="go('decision','Discover')">让 Agent 生成可执行方案</button>
+        </div>
+      </section>
+
+      <!-- Flow 5 Decision -->
+      <section class="screen" id="decision">
+        <div class="card cyan-card">
+          <div class="title">Decision Compression</div>
+          <div class="stats">
+            <div class="stat"><b>126</b><span>flights</span></div>
+            <div class="stat"><b>48</b><span>hotels</span></div>
+            <div class="stat"><b>32</b><span>attractions</span></div>
+            <div class="stat"><b>3</b><span>plans kept</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">已排除的方向</div>
+          <div class="sub">东京+大阪双城：换酒店频繁，节奏偏紧。<br>北海道：国庆红叶稳定性不足，机票成本高。<br>东京市区：红叶体验弱于京都周边。</div>
+        </div>
+
+        <div class="card plan-card recommend">
+          <div class="rec">Recommended</div>
+          <div class="title">Plan C｜京都 + 奈良低强度红叶线</div>
+          <div class="price">¥18,420</div>
+          <div class="badge-row">
+            <span class="badge green">Live Price</span>
+            <span class="badge green">Verified Hours</span>
+            <span class="badge">Estimated Traffic</span>
+            <span class="badge">Real Reviews</span>
+            <span class="badge green">Refundable</span>
+          </div>
+          <div class="sub">推荐依据：预算内保留红叶和温泉体验，换酒店 1 次，每日步行约 7km，符合父母舒适游览。</div>
+        </div>
+
+        <div class="card plan-card">
+          <div class="title">Plan A｜东京周边轻松线</div>
+          <div class="price">¥16,800</div>
+          <div class="sub">如果更在意预算，可切换到 A。便宜约 ¥1,600，但红叶体验和温泉弱一些。</div>
+        </div>
+
+        <div class="card plan-card">
+          <div class="title">Plan B｜九州温泉线</div>
+          <div class="price">¥17,600</div>
+          <div class="sub">如果更在意温泉和少走路，可切换到 B。红叶确定性低于京都。</div>
+        </div>
+
+        <div class="card">
+          <div class="title">关键差异</div>
+          <table>
+            <tr><th></th><th>东京</th><th>九州</th><th>京都奈良</th></tr>
+            <tr><td>红叶体验</td><td>中</td><td>中</td><td>高</td></tr>
+            <tr><td>父母友好</td><td>高</td><td>高</td><td>高</td></tr>
+            <tr><td>预算压力</td><td>低</td><td>中</td><td>中</td></tr>
+            <tr><td>温泉</td><td>低</td><td>高</td><td>中</td></tr>
+          </table>
+          <button class="btn gradient full" onclick="go('workspace','Map')">采纳推荐，进入 Trip Workspace</button>
+        </div>
+      </section>
+
+      <!-- Flow 6 Workspace -->
+      <section class="screen" id="workspace">
+        <div class="map">
+          <div class="map-conflict">Day 3 traffic risk</div>
+        </div>
+
+        <div class="day-tabs">
+          <button>Overview</button>
+          <button class="active">Day 2</button>
+          <button>Day 3</button>
+          <button>Day 4</button>
+        </div>
+
+        <div class="card cyan-card">
+          <div class="health">
+            <div class="score"><div>86</div></div>
+            <div>
+              <div class="title" style="margin-bottom:4px">Trip Health</div>
+              <div class="checklist">
+                <span>✓ Budget within range</span>
+                <span>✓ Daily walking suitable</span>
+                <span>✓ Hotel area matched</span>
+                <span class="warning">⚠ Day 3 traffic time is long</span>
+                <span class="warning">⚠ Nara experience needs reservation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="workspace-grid">
+          <div class="mini-panel"><b>Budget Risk</b><span>¥18,420 / ¥20,000<br>剩余 ¥1,580</span></div>
+          <div class="mini-panel"><b>Booking Status</b><span>Flights ready<br>Hotel inventory checking</span></div>
+          <div class="mini-panel"><b>Tasks</b><span>4 items pending<br>eSIM / Insurance / Entry</span></div>
+          <div class="mini-panel"><b>Travelers</b><span>Mom confirmed<br>Dad waiting</span></div>
+        </div>
+
+        <div class="card">
+          <div class="title">Day 2｜Kyoto Red Leaves</div>
+          <div class="timeline-item">
+            <div class="num">1</div>
+            <div class="poi">
+              <b>Arashiyama Bamboo Grove</b>
+              <p>09:30 · stay 120min · Verified Hours · Walking Medium</p>
+              <button class="btn small secondary" onclick="showImpact()">拖拽调整</button>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="num">2</div>
+            <div class="poi">
+              <b>Sagano Tofu Lunch</b>
+              <p>13:00 · Real Reviews · 距上一地点 12min</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="num">3</div>
+            <div class="poi">
+              <b>Hot Spring Hotel Check-in</b>
+              <p>15:30 · Refundable · 距地铁 450m</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn gradient full" onclick="go('action','Plan')">锁定方案，进入 Action Center</button>
+      </section>
+
+      <!-- Flow 7 Action Center -->
+      <section class="screen" id="action">
+        <div class="agent-card">
+          <b>Agent Action Center</b>
+          <p>我会展示每个执行动作。支付、改签、取消等高风险操作必须由你确认。</p>
+        </div>
+
+        <div class="card cyan-card">
+          <div class="title">Agent 正在执行</div>
+          <div class="exec-row">
+            <div class="status-dot">✓</div>
+            <div class="exec-main"><b>锁定航班价格 10 分钟</b><p>上海 → 大阪往返，避开红眼航班。</p></div>
+          </div>
+          <div class="exec-row">
+            <div class="status-dot">✓</div>
+            <div class="exec-main"><b>填写常用乘机人</b><p>已读取 3 位常用旅客，等待你确认。</p></div>
+          </div>
+          <div class="exec-row">
+            <div class="status-dot">✓</div>
+            <div class="exec-main"><b>应用会员优惠券 ¥320</b><p>已选择当前组合最优优惠。</p></div>
+          </div>
+          <div class="exec-row">
+            <div class="status-dot pending">…</div>
+            <div class="exec-main"><b>确认温泉酒店库存</b><p>正在校验 5 晚连住和取消政策。</p></div>
+          </div>
+          <div class="exec-row">
+            <div class="status-dot wait">○</div>
+            <div class="exec-main"><b>等待支付确认</b><p>支付不会由 Agent 自动完成。</p></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Ready to Book</div>
+          <div class="goal-row"><span>Flights</span><span>¥7,440</span></div>
+          <div class="goal-row"><span>Hotel</span><span>¥5,960</span></div>
+          <div class="goal-row"><span>Tickets</span><span>¥1,260</span></div>
+          <div class="goal-row"><span>Airport Transfer</span><span>¥1,480</span></div>
+          <div class="goal-row"><span>Coupon</span><span style="color:#16a34a">-¥320</span></div>
+        </div>
+
+        <div class="card">
+          <div class="title">Permission Boundaries</div>
+          <div class="permission"><span>价格监控 / 使用优惠券</span><span>Auto</span></div>
+          <div class="permission"><span>锁定资源 / 填写乘机人</span><span>Confirm</span></div>
+          <div class="permission"><span>支付 / 改签 / 取消</span><span>Manual</span></div>
+        </div>
+
+        <div class="handoff">
+          复杂情况可转真人旅行顾问：签证、特殊老人需求、多城市高价值订单。
+        </div>
+
+        <button class="btn gradient full" onclick="previewBooking()">查看预订完成示例（不付款）</button>
+      </section>
+
+      <!-- Trip Object -->
+      <section class="screen" id="tripobject">
+        <div class="object-header">
+          <h2>我的京都旅行</h2>
+          <p>Trip Object · 完成度 72% · Agent 正在持续管理</p>
+        </div>
+
+        <div class="card">
+          <div class="title">已确认</div>
+          <div class="todo-group">
+            <div class="todo done">✓ 航班已出票</div>
+            <div class="todo done">✓ 酒店已确认</div>
+            <div class="todo done">✓ 机场接送</div>
+            <div class="todo done">✓ 日历同步</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">待完成</div>
+          <div class="todo-group">
+            <div class="todo wait">○ 奈良体验预约</div>
+            <div class="todo wait">○ 流量卡</div>
+            <div class="todo wait">○ 旅行保险</div>
+            <div class="todo wait">○ 入境材料</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Execution Log</div>
+          <div class="sub">
+            14:20 锁定航班价格<br>
+            14:21 应用会员优惠券 ¥320<br>
+            14:23 用户确认支付<br>
+            14:24 酒店预订成功<br>
+            14:25 同步日历和同行人行程单
+          </div>
+        </div>
+
+        <div class="card cyan-card">
+          <div class="title">Monitoring</div>
+          <div class="sub">Agent 正在监测航班、天气、酒店入住、景点开放、门票库存和当地交通。</div>
+          <button class="btn gradient full" onclick="go('replan','Map')">模拟航班延误</button>
+        </div>
+      </section>
+
+      <!-- Flow 8 Dynamic Re-plan -->
+      <section class="screen" id="replan">
+        <div class="agent-card" style="border-left-color:#f97316">
+          <b style="color:#f97316">Flight delayed by 2h</b>
+          <p>Agent 已检测到航班延误，并评估对酒店、接送机、晚餐和 Day 1 景点的影响。</p>
+        </div>
+
+        <div class="card">
+          <div class="title">Impact Scope</div>
+          <div class="impact-grid">
+            <div class="impact"><b>酒店入住</b><p>预计延后至 20:30，需要通知酒店。</p></div>
+            <div class="impact"><b>机场接送</b><p>原司机等待时间不足，需要改时间。</p></div>
+            <div class="impact"><b>晚餐预约</b><p>可能无法按时到达。</p></div>
+            <div class="impact"><b>Day 1 景点</b><p>清水寺夜间参观需要取消或改期。</p></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Alternative Plans</div>
+          <div class="alt">
+            <b>A｜保留原安排</b>
+            <p>风险：晚餐可能错过，接送机可能产生等待费。</p>
+          </div>
+          <div class="alt recommend">
+            <b>B｜推荐：改晚餐 + 调整接送机</b>
+            <p>费用 +¥0。不影响 Day 2 核心红叶行程。Agent 可通知酒店、修改接送机、同步同行人。</p>
+          </div>
+          <div class="alt">
+            <b>C｜改签更早航班</b>
+            <p>费用 +¥1,200。可保留 Day 1 晚餐，但预算接近上限。</p>
+          </div>
+          <button class="btn gradient full" onclick="showAdjustDone()">授权 Agent 执行方案 B</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Bottom Agent Action Panel -->
+    <div class="bottom-agent">
+      <div class="demo-notice">本地演示 · 固定示例，无真实预订或 AI 后台</div>
+      <div class="line1">
+        <div class="avatar">AI</div>
+        <div class="agent-text">
+          <b id="agentTitle">Trip Agent 统一入口</b>
+          <span id="agentDesc">Planner、Booking、Monitoring 都由 Agent 推进。</span>
+        </div>
+      </div>
+      <div class="action-row">
+        <button class="btn small light" onclick="go('home','Plan')">Home</button>
+        <button class="btn small secondary" onclick="go('goal','Plan')">Goal</button>
+        <button class="btn small secondary" onclick="go('workspace','Map')">Workspace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local feedback for prototype-only controls -->
+  <div id="demoFeedback" class="demo-feedback" role="status" aria-live="polite" hidden></div>
+
+  <!-- Impact Modal -->
+  <div class="modal-mask" id="impactModal">
+    <div class="modal">
+      <div class="title">Impact Preview</div>
+      <div class="sub">拖拽后，Agent 已重新计算路线和当天负担。</div>
+      <div class="goal-row"><span>交通时间</span><span class="warn">+32min</span></div>
+      <div class="goal-row"><span>步行距离</span><span class="warn">+1.8km</span></div>
+      <div class="goal-row"><span>晚餐预约</span><span class="warn">可能延迟 20min</span></div>
+      <div class="agent-card" style="margin-top:10px">
+        <b>Agent Suggestion</b>
+        <p>将晚餐换到酒店附近，可减少 40min 路程，父母步行仍控制在 7km 内。</p>
+      </div>
+      <button class="btn gradient full" onclick="hideImpact(true)">应用 Agent 建议</button>
+      <button class="btn secondary full" onclick="hideImpact(false)">保留我的调整</button>
+    </div>
+  </div>
+
+  <!-- Adjust Done Modal -->
+  <div class="modal-mask" id="adjustModal">
+    <div class="modal">
+      <div class="success">✓</div>
+      <div class="title" style="text-align:center">本地调整结果示例</div>
+      <div class="sub">固定演示内容，未联系酒店、修改预约或同步真实订单。</div>
+      <div class="card" style="box-shadow:none;margin-top:10px">
+        <div class="exec-row">
+          <div class="status-dot">✓</div>
+          <div class="exec-main"><b>酒店已收到延迟入住通知</b><p>确认可 20:30 后入住。</p></div>
+        </div>
+        <div class="exec-row">
+          <div class="status-dot">✓</div>
+          <div class="exec-main"><b>接送机已改为 20:40</b><p>无额外费用。</p></div>
+        </div>
+        <div class="exec-row">
+          <div class="status-dot">✓</div>
+          <div class="exec-main"><b>晚餐已取消</b><p>无手续费。</p></div>
+        </div>
+        <div class="exec-row">
+          <div class="status-dot">✓</div>
+          <div class="exec-main"><b>同步订单 / 地图 / 日历 / 同行人</b><p>所有版本已更新。</p></div>
+        </div>
+      </div>
+      <button class="btn gradient full" onclick="hideAdjustDone()">完成</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/旅行规划.js"></script>
+</body>
+</html>

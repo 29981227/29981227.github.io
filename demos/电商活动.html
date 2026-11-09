@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../assets/css/电商活动.css">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>电商活动任务设计</title>
+<link rel="stylesheet" href="../assets/css/电商活动-补充2.css">
+</head>
+
+<body>
+<div class="phone">
+  <div class="status">
+    <span>9:44</span>
+    <span class="campaign-pill" title="电商活动任务设计">SHOP DEMO</span>
+    <span>5G 🔋</span>
+  </div>
+
+  <!-- HOME / CAMPAIGN SHOPPING FEED -->
+  <section id="home" class="screen active">
+    <div class="home-header">
+      <div class="search-row">
+        <div class="search">wireless headphones <span>🔍</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="active">All</div>
+        <div>Women</div>
+        <div>Home</div>
+        <div>Men</div>
+        <div>Jewelry</div>
+        <div>Accessories</div>
+      </div>
+    </div>
+
+    <div class="hero-banner">
+      <h1>
+        <small>Fall limited sale</small>
+        Up to 90% OFF
+      </h1>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">🚚 Free shipping<span>On all orders</span></div>
+      <div class="benefit">↩ Free returns<span>Within 90 days</span></div>
+    </div>
+
+    <div id="activityBar" class="activity-bar">
+      <div class="activity-top">
+        <strong id="activityTitle">$300 Coupon Bundle</strong>
+        <span class="timer">Ends in 23:58:52</span>
+      </div>
+      <div class="activity-body">
+        <div class="progress-line">
+          <span id="progressLabel">Buy 2 eligible items</span>
+          <span class="progress-count" id="progressCount">0 / 2</span>
+        </div>
+        <div class="bar"><div id="fill" class="fill"></div></div>
+        <div id="activityMsg" class="activity-msg">
+          Select 2 items from this feed. Coupons are issued after successful payment.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <div>
+        <h3 id="feedTitle">Recommended deals</h3>
+        <p id="feedDesc">Best sellers with free shipping</p>
+      </div>
+      <span class="link" onclick="openRules()">Benefits</span>
+    </div>
+
+    <div id="filters" class="filters">
+      <div class="filter active" onclick="setFilter('easy', this)">Easy add-ons</div>
+      <div class="filter" onclick="setFilter('under5', this)">Under $5</div>
+      <div class="filter" onclick="setFilter('related', this)">Recommended</div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="checkout" class="screen">
+    <div class="topbar">
+      <div class="back" onclick="goHome()">‹</div>
+      <div class="top-title">Order confirmation</div>
+    </div>
+
+    <div class="checkout-reward">
+      <h3>$300 Coupon Bundle unlocked</h3>
+      <p>
+        You selected 2 eligible items. Your coupon bundle will be issued immediately after successful payment.
+        This reward is not applied to the current order.
+      </p>
+      <div class="check-steps">
+        <div class="check-step"><div class="circle">✓</div>2 eligible items selected</div>
+        <div class="check-step"><div class="circle">✓</div>$300 coupon bundle unlocked</div>
+        <div class="check-step pending"><div class="circle pending">3</div>Complete payment to receive coupons</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">Shipping address</div>
+      <div class="muted">
+        Pihao he · +1 9396251243<br/>
+        Address line 1, Address line 2<br/>
+        Wann, OK 18987, United States
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">Payment method</div>
+      <div class="pay-main">
+        <span>● Credit card ending in 7408</span>
+        <span class="link" onclick="togglePay()">More</span>
+      </div>
+      <div id="morePay" class="more-pay">
+        <div class="pay-option">○ Mobile wallet</div>
+        <div class="pay-option">○ Online wallet</div>
+        <div class="pay-option">○ Account balance</div>
+        <div class="pay-option">○ Pay in 4 installments</div>
+        <div class="pay-option">○ Monthly installments</div>
+        <div class="pay-option">○ Bank transfer</div>
+      </div>
+      <p class="muted">Demo only. No payment details are collected and no money is charged.</p>
+    </div>
+
+    <div class="box">
+      <div class="box-title">Order summary</div>
+      <div id="summaryItems"></div>
+      <div class="row"><span>Shipping</span><span>Free</span></div>
+      <div class="row"><span>Estimated tax</span><span id="tax">$0.00</span></div>
+      <div class="row total"><span>Order total</span><span id="total">$0.00</span></div>
+      <div class="row"><span>Reward after payment</span><strong style="color:#ff6900">+$300 coupons</strong></div>
+    </div>
+  </section>
+
+  <!-- SUCCESS -->
+  <section id="success" class="screen success">
+    <div class="success-icon">✓</div>
+    <h2>Demo order complete</h2>
+    <p class="muted">This is a local demo. No payment was made and no order was submitted.</p>
+    <div class="wallet">
+      <strong>$300 Coupon Bundle</strong>
+      <p class="muted">3 × $100 off $150 sample coupons. This demo does not issue real rewards.</p>
+    </div>
+    <br/>
+    <button class="secondary" onclick="location.reload()">Restart demo</button>
+  </section>
+
+  <!-- Sticky campaign CTA -->
+  <div id="stickyCta" class="sticky-cta">
+    <div class="sticky-copy">
+      <span id="stickyText"><b>0 / 2 selected</b><br/>Buy 2 items to get your $300 coupon bundle.</span>
+      <span class="link" onclick="openRules()">Rules</span>
+    </div>
+    <button id="stickyBtn" class="primary disabled" onclick="stickyAction()">Choose 2 items</button>
+  </div>
+
+  <div id="bottomNav" class="bottom-nav">
+    <div class="nav active"><b>⌂</b>Home</div>
+    <div class="nav"><b>⌕</b>Category</div>
+    <div class="nav"><b>👤</b>Account</div>
+    <div class="nav"><b>🛒</b>Cart</div>
+    <div class="nav"><b>▤</b>Benefits</div>
+  </div>
+
+  <!-- Spin modal -->
+  <div id="spinMask" class="mask show">
+    <div class="modal spin-modal">
+      <div class="close" onclick="skipSpin()">×</div>
+      <h2>Spin to claim your coupon set</h2>
+      <p>Limited-time offer. Win coupons before shopping.</p>
+      <div id="wheel" class="wheel">
+        <div class="wheel-center">SPIN</div>
+        <div class="slice s1">$300</div>
+        <div class="slice s2">$80</div>
+        <div class="slice s3">$150</div>
+        <div class="slice s4">$50</div>
+      </div>
+      <button id="spinBtn" class="primary" onclick="spin()">Spin</button>
+    </div>
+  </div>
+
+  <!-- Task modal -->
+  <div id="taskMask" class="mask">
+    <div class="modal task-modal">
+      <div class="close" onclick="startCampaign()">×</div>
+      <h2>Buy 2 items to get</h2>
+      <div class="ticket">
+        <div class="big">$300</div>
+        <div class="small">Coupon Bundle</div>
+      </div>
+      <p>
+        Includes 3 × $100 off $150 coupons. Coupons are issued after successful payment.
+      </p>
+      <button class="primary" onclick="startCampaign()">Shop eligible items</button>
+      <div class="rule-link" onclick="openRules()">View rules</div>
+    </div>
+  </div>
+
+  <!-- One more modal -->
+  <div id="oneMoreMask" class="mask">
+    <div class="modal task-modal">
+      <div class="close" onclick="closeOneMore()">×</div>
+      <h2>Almost there</h2>
+      <div class="ticket">
+        <div class="big">1 more</div>
+        <div class="small">item to unlock $300</div>
+      </div>
+      <p>
+        We’ll show low-price add-ons so you can complete the offer faster.
+      </p>
+      <button class="primary" onclick="closeOneMore()">Pick my second item</button>
+    </div>
+  </div>
+
+  <!-- Reward modal -->
+  <div id="rewardMask" class="mask">
+    <div class="modal reward-modal">
+      <div class="close" onclick="closeReward()">×</div>
+      <h2>$300 Coupon Bundle unlocked</h2>
+      <p>Complete checkout to receive your coupons after payment.</p>
+      <div class="coupon-row">
+        <div class="coupon-chip"><strong>$100</strong><span>off $150</span></div>
+        <div class="coupon-chip"><strong>$100</strong><span>off $150</span></div>
+        <div class="coupon-chip"><strong>$100</strong><span>off $150</span></div>
+      </div>
+      <button class="primary" onclick="goCheckout()">Continue to checkout</button>
+      <div class="rule-link" onclick="closeReward()">Keep shopping</div>
+    </div>
+  </div>
+
+  <!-- Rules sheet -->
+  <div id="rulesMask" class="mask">
+    <div class="modal sheet">
+      <div class="close" onclick="closeRules()">×</div>
+      <h3>Coupon bundle details</h3>
+      <div class="coupon-row">
+        <div class="coupon-chip"><strong>$100</strong><span>off $150</span></div>
+        <div class="coupon-chip"><strong>$100</strong><span>off $150</span></div>
+        <div class="coupon-chip"><strong>$100</strong><span>off $150</span></div>
+      </div>
+      <ul class="rules">
+        <li>Buy 2 eligible items to qualify.</li>
+        <li>Coupons are issued after successful payment.</li>
+        <li>The bundle includes 3 coupons: each $100 off orders over $150.</li>
+        <li>Coupons can be used on future eligible orders.</li>
+        <li>This coupon bundle is not applied to the current order.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Added</div>
+</div>
+
+<script src="../assets/js/电商活动.js"></script>
+</body>
+</html>
